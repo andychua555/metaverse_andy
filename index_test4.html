@@ -5,20 +5,14 @@
 </head>
 <body>
 <a-scene>
-  <!--Sharing position -->
 <a-assets>
+    <!--Sharing position -->
   <a-mixin id="user" visible="false" look-controls wasd-controls share="position, rotation"></a-mixin>
 </a-assets>
 
-  
-  <a-entity sharedspace="hold: true; audio: true" avatars="onmyself: user">
-    <!-- Actually, this is not needed but convenient to have some reference points -->
-    <a-entity environment="preset: forest"><a-entity>
-  </a-entity>
-
-<!--Positional audio and add mixin to the user’s avatar-->
-<a-entity sharedspace="hold: true; audio: true" avatars="onmyself: user"></a-entity>
-
+  <!--Positional audio and add mixin to the user’s avatar-->
+  <a-entity sharedspace="hold: true; audio: true" avatars="onmyself: user"></a-entity>
+    <a-entity environment="preset: forest"><a-entity></a-entity>
 
 </a-scene>
 
