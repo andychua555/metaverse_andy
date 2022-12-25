@@ -1,0 +1,145 @@
+<head>
+<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/delapuente/aframe-sharedspace-component/master/dist/aframe-sharedspace-component.min.js"></script>
+<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+<script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+</head>
+<body>
+<a-scene gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;
+    meshoptDecoderPath: https://unpkg.com/meshoptimizer@0.16.0/meshopt_decoder.js">
+
+<a-assets>
+  <!--Sharing position -->
+  <a-mixin id="user" visible="false" look-controls wasd-controls share="position, rotation"></a-mixin>
+<a-asset-item id="cyber_truck" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/zombie-car/model.gltf"> </a-asset-item>
+<a-asset-item id="house" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-7/model.gltf"> </a-asset-item>
+<a-asset-item id="house2" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-4/model.gltf"> </a-asset-item>
+<a-asset-item id="house3" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-5/model.gltf"> </a-asset-item>
+<a-asset-item id="bear" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/bear/model.gltf"> </a-asset-item>
+<a-asset-item id="lamppost" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+<a-asset-item id="shop" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+
+</a-assets>
+
+  <!--Positional audio and add mixin to the user’s avatar-->
+  <a-entity sharedspace="hold: true; audio: true" avatars="onmyself: user"> </a-entity>
+  <a-entity environment="preset:forest"></a-entity>
+  <a-entity gltf-model="#house" position="0 0 -15" scale="9 9 9"></a-entity>
+  <a-entity gltf-model="#house2" position="-15 2 -15" scale="7 7 7"></a-entity>
+  <a-entity gltf-model="#house3" position="30 0 -15" scale="7 7 7"></a-entity>
+  <a-entity gltf-model="#bear"position="0 4 -15" rotation="0 90 0" scale="3 3 3"></a-entity>
+<a-entity gltf-model="#cyber_truck"position="12 2 -15" scale="4 4 4"></a-entity>
+  <a-entity gltf-model="#lamppost" position="-15 0 0" scale="3 3 3"></a-entity>
+  <a-entity gltf-model="#shop" position="-15 0 0" scale="3 3 3"></a-entity>
+ <a-entity id="rig">
+        <a-camera position="0 1.6 0"></a-camera>
+        <a-entity oculus-touch-controls="hand: left" ></a-entity>
+        <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+    </a-entity>
+<a-entity text="value: root; color: orange" position="-15 12 -15" scale="20 20 20"></a-entity>
+<a-box id="target-box" color="#5E82C5" position="-3 0 -5"></a-box>
+<a-box follow="target: #target-box; speed: 1" color="#FF6B6B" position="3 0 -5"></a-box>
+<a-link href="https://www.ntu.edu.sg" title="My Homepage" image="#" scale="1 1 1"></a-link>
+
+
+</a-scene>
+
+<!--Custom avatars-->
+<template>
+  <a-entity>
+    <a-sphere radius="0.1" color="#ffffff"></a-sphere>
+    <a-sphere position="0.05 0.03 -0.08" radius="0.02" segments-width="8" segments-height="8" color="#000000"></a-sphere>
+    <a-sphere position="-0.05 0.03 -0.08" radius="0.02" segments-width="8" segments-height="8" color="#000000"></a-sphere>
+    <a-sphere class="themable" position="0 -0.07 -0.1" scale="1 1 0.5" segments-width="4" segments-height="4" radius="0.02" color="#11fd3e"></a-sphere>
+    <a-cone class="themable" position="0.03 -0.07 -0.1" rotation="0 0 90" scale="1 1 0.5" segments-radial="8" segments-height="1" height="0.03" radius-bottom="0.03"  color="#1cff3c"></a-cone>
+    <a-cone class="themable" position="-0.03 -0.07 -0.1" rotation="0 0 -90" scale="1 1 0.5" segments-radial="8" segments-height="1" height="0.03" radius-bottom="0.03"  color="#1cff3c"></a-cone>
+  </a-entity>
+</template>
+
+<script>
+<!--Randomly generated room names-->
+  var scene = document.querySelector('a-scene');
+      
+  (function start() {
+    if (!scene.hasLoaded) {
+      scene.addEventListener('loaded', start);
+      return;
+    }
+        
+var prefix = window.location.host.split('.')[0] + '-';
+var currentUrl = new URL(window.location);
+var roomName = currentUrl.search.substr(1);
+
+if (!roomName) {
+  roomName = prefix + Date.now();
+  currentUrl.search = roomName;
+  history.pushState({}, '', currentUrl.href);
+}
+        
+var room = document.querySelector('[sharedspace]');
+
+<!--Fixing orientation-->
+room.addEventListener('avataradded', function onAdded(evt) {
+
+<!--managing the environment preset-->
+
+var presets = [
+  'contact', 'egypt', 'checkerboard', 'forest',
+  'goaland', 'yavapai', 'goldmine', 'threetowers',
+  'poison', 'arches', 'tron', 'japan',
+  'dream', 'volcano', 'starry', 'osiris'
+];
+var environment = document.querySelector('[environment]');
+        
+function setEnvironment(preset) {
+  environment.setAttribute('environment', { preset: preset });
+}
+        
+function getNextPreset() {
+  var currentPreset = environment.getAttribute('environment').preset;
+  var index = presets.indexOf(currentPreset);
+  return presets[(index + 1) % presets.length];
+}
+
+
+<!--receiving and sending messages-->
+window.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 32 /* spacebar */) {
+    var preset = getNextPreset();
+    setEnvironment(preset);
+    room.components.sharedspace.send('*', { type: 'environment', preset: preset });
+  }
+});
+        
+room.addEventListener('participantmessage', function (evt) {
+  if (evt.detail.message.type === 'environment') {
+    var preset = evt.detail.message.preset;
+    setEnvironment(preset);
+  }
+});
+  
+  var avatar = evt.detail.avatar;
+  if (!avatar.hasLoaded) {
+    avatar.addEventListener('loaded', onAdded.bind(null, evt));
+    return;
+  }
+          
+  var avatarY = avatar.getAttribute('position').y;  
+  avatar.object3D.lookAt(new THREE.Vector3(0, avatarY, 0));
+
+  var radToDeg = THREE.Math.radToDeg;
+  var rotation = avatar.object3D.rotation;
+  rotation.y += Math.PI;
+
+  avatar.setAttribute('rotation', {
+    x: radToDeg(rotation.x),
+    y: radToDeg(rotation.y),
+    z: radToDeg(rotation.z)
+  });
+});
+room.setAttribute('sharedspace', { room: roomName, hold: false });
+
+
+  }());
+</script>
+</body>
