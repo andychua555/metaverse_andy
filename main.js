@@ -4,7 +4,7 @@ var arms = {}
 var avatars = {}
 
 //connecting to deepstream
-var client = deepstream('wss://154.deepstreamhub.com?apiKey=4f3d4540-afe5-429e-ae68-160212e376a7')
+var client = deepstream('https://andychua555.github.io/metaverse_andy/index_m.html')
 console.log('starting')
 client.login({}, function (success,data) {
 	console.log("logged in", success)
