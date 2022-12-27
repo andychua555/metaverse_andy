@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+ <meta charset="utf-8" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+<script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+
+  </head>
+  <body>
+
+
+    <a-scene gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;
+    meshoptDecoderPath: https://unpkg.com/meshoptimizer@0.16.0/meshopt_decoder.js">
+
+<a-assets>
+<a-asset-item id="cyber_truck" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/zombie-car/model.gltf"> </a-asset-item>
+<a-asset-item id="house" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-7/model.gltf"> </a-asset-item>
+<a-asset-item id="house2" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-4/model.gltf"> </a-asset-item>
+<a-asset-item id="house3" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-5/model.gltf"> </a-asset-item>
+<a-asset-item id="bear" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/bear/model.gltf"> </a-asset-item>
+<a-asset-item id="lamppost" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+<a-asset-item id="shop" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+<a-asset-item id="bus" src="https://andychua555.github.io/metaverse_andy/bus.glb"> </a-asset-item>
+</a-assets>
+
+  <a-entity environment="preset:forest"></a-entity>
+  <a-entity gltf-model="#house" position="0 0 -15" scale="9 9 9"></a-entity>
+  <a-entity gltf-model="#house2" position="-15 2 -15" scale="7 7 7"></a-entity>
+  <a-entity gltf-model="#house3" position="30 0 -15" scale="7 7 7"></a-entity>
+  <a-entity gltf-model="#bear"position="0 4 -15" rotation="0 90 0" scale="3 3 3"></a-entity>
+  <a-entity gltf-model="#lamppost" position="-15 0 0" scale="3 3 3"></a-entity>
+  <a-entity gltf-model="#shop" position="-15 0 0" scale="3 3 3"></a-entity>
+ <a-entity id="rig">
+        <a-camera position="0 1.6 0"></a-camera>
+        <a-entity oculus-touch-controls="hand: left" ></a-entity>
+        <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+    </a-entity>
+
+<!--shadow-->
+<a-entity gltf-model="#cyber_truck" position="-20 0.8 -5"  rotation="0 90 0" animation='property: position; dur: 10000; from: -20 0.8 -5; to: 35 0.8 -5; dir: normal;  easing: linear; loop: true;' scale="1 1 1" shadow="receive: false"></a-entity>
+
+<a-entity light="type:directional; castShadow:true;" position="1 1 1"></a-entity>
+<a-gltf-model src="#cyber_truck" position="-20 0.8 -5" shadow="autoUpdate: true"></a-gltf-model>
+
+<!--sound-->
+<a-entity id="river" geometry="primitive: plane" material="color: blue"
+          position="-10 0 0" sound="src: url(music.mp3); autoplay: true"></a-entity>
+
+</a-scene>
+
+  </body>
+</html>
