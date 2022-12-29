@@ -1,0 +1,222 @@
+<head>
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+<script src="https://cdn.rawgit.com/delapuente/aframe-sharedspace-component/master/dist/aframe-sharedspace-component.min***.js"></script>
+<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+<script>
+var entity = document.querySelector('[sound]');
+entity.components.sound.stopSound();
+</script>
+<style>
+.a-loader-title {
+  color: red;
+}
+</style>
+</head>
+<body>
+<a-scene gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;
+    meshoptDecoderPath: https://unpkg.com/meshoptimizer@0.16.0/meshopt_decoder.js" loading-screen="dotsColor: red; backgroundColor: black; enabled: true">
+
+
+<a-assets>
+    <!--Sharing position -->
+  <a-mixin id="user" visible="false" look-controls wasd-controls share="position, rotation"></a-mixin>
+<a-asset-item id="cyber_truck" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/zombie-car/model.gltf"> </a-asset-item>
+<a-asset-item id="house" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-7/model.gltf"> </a-asset-item>
+<a-asset-item id="house2" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-4/model.gltf"> </a-asset-item>
+<a-asset-item id="house3" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-5/model.gltf"> </a-asset-item>
+<a-asset-item id="campus" src="https://andychua555.github.io/metaverse_andy/the_cable_center_building.glb"> </a-asset-item>
+<a-asset-item id="lamppost" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+<a-asset-item id="bus" src="https://andychua555.github.io/metaverse_andy/bus.glb"> </a-asset-item>
+<a-asset-item id="hall" src="https://andychua555.github.io/metaverse_andy/hall.glb"> </a-asset-item>
+<a-asset-item id="tree" src="https://andychua555.github.io/metaverse_andy/trees_and_foliage.glb"> </a-asset-item>
+<a-asset-item id="shop" src="https://andychua555.github.io/metaverse_andy/uk_terraced_shop.glb"> </a-asset-item>
+<a-asset-item id="bear" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/bear/model.gltf"> </a-asset-item>
+<video id="myvideo" autoplay loop="true" src="https://andychua555.github.io/metaverse_andy/video.mp4"></video>
+</a-assets>
+
+  <!--Positional audio and add mixin to the user’s avatar-->
+  <a-entity sharedspace="hold: true; audio: true" avatars="onmyself: user">
+    
+
+
+<a-entity environment="skyType: gradient; skyColor: #ffffff; horizonColor: #ADD8E6; groundTexture: checkerboard; groundColor: #228B22; groundColor2: #228B22; dressing: cubes; dressingAmount: 1; dressingColor: #228B22"></a-entity>
+<!--shadow-->
+<a-entity light="type:directional; castShadow:true;" position="1 1 1"></a-entity>
+
+
+<a-entity gltf-model="#house" position="80 0 15" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#house" position="60 0 15" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#house" position="40 0 15" scale="9 9 9" rotation="0 180 0"></a-entity>
+<a-entity gltf-model="#house2" position="80 3 35" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#house2" position="60 3 35" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#house2" position="40 3 35" scale="9 9 9" rotation="0 180 0"></a-entity>
+<a-entity gltf-model="#house3" position="80 0 55" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#house3" position="60 0 55" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#house3" position="40 0 55" scale="9 9 9" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#hall" position="40 0 65" scale="0.3 0.3 0.3" rotation="0 180 0"></a-entity>
+  <a-entity gltf-model="#campus" position="-45 -4 40" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#campus" position="-165 -4 40" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#campus" position="-100 -2.1 140" scale="2 2 2"></a-entity>
+<a-entity gltf-model="#shop" rotation="0 90 0" position="-93 0 8" scale="6 6 6"></a-entity>
+<a-entity gltf-model="#shop" rotation="0 120 0" position="-93 0 42" scale="6 6 6"></a-entity>
+
+<!--small road and house tree-->
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="1 0.2 -7" scale="180 0.03 5"></a-box>
+ <a-entity gltf-model="#tree" position="8 -2 -32"  scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="8 0.2 25" scale="180 0.03 5"></a-box>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="88 0.2 -7" scale="03 0.03 180"></a-box>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="68 0.2 -7" scale="03 0.03 180"></a-box>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="48 0.2 -7" scale="03 0.03 180"></a-box>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="28 0.2 -7" scale="03 0.03 180"></a-box>
+ <a-entity gltf-model="#tree" position="38 0.4 15" scale="0.01 0.01 0.01" rotation="0 0 0"></a-entity>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="8 0.2 -7" scale="03 0.03 180"></a-box>
+<a-box follow="target: #target-box; speed: 1" color="#000000" position="-80 0.2 28" scale="03 0.03 180"></a-box>
+
+
+<!-- street--> 
+ <a-entity gltf-model="#lamppost" position="90 0 70" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 70" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="90 0 55" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 55" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="90 0 40" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 40" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="90 0 25" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 25" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="90 0 10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 10" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="90 0 -25" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 -25" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="90 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="90 -2 -10" scale="0.01 0.01 0.01" rotation="0 -120 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="75 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="75 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="60 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="60 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="45 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="45 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="30 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="30 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="15 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="15 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="-0 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-0 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="-15 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-15 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+  <a-entity gltf-model="#lamppost" position="-30 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-30 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+    <a-entity gltf-model="#lamppost" position="-45 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-45 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+    <a-entity gltf-model="#lamppost" position="-60 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-60 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+    <a-entity gltf-model="#lamppost" position="-75 0 -10" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-75 -2 -10" scale="0.01 0.01 0.01" rotation="0 -20 0"></a-entity>
+
+<!--opp street--> 
+<a-entity gltf-model="#lamppost" position="-90 0.2 30" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-90 -2 30" scale="0.01 0.01 0.01" rotation="0 -130 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-90 0.2 15" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-90 -2 15" scale="0.01 0.01 0.01" rotation="0 -130 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-90 0.2 0" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-90 -2 0" scale="0.01 0.01 0.01" rotation="0 -130 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-90 0.2 -15" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-90 -2 -15" scale="0.01 0.01 0.01" rotation="0 -130 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-60 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-60 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-45 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-45 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-30 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-30 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="-15 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="-15 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="0 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="0 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="15 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="15 -2 30" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="30 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="30 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="45 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="45 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+ <a-entity gltf-model="#lamppost" position="60 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="60 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+<a-entity gltf-model="#lamppost" position="75 0.2 28" scale="3 3 3"></a-entity>
+ <a-entity gltf-model="#tree" position="75 -2 28" scale="0.01 0.01 0.01" rotation="0 -30 0"></a-entity>
+
+
+<!-- hand controls-->
+ <a-entity id="rig">
+<a-camera position="0 1.6 0"></a-camera>
+<a-entity oculus-touch-controls="hand: left" ></a-entity>
+<a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+</a-entity>
+
+
+<!-- vehicles-->
+<a-entity gltf-model="#cyber_truck"position="22 1 -15" position="8 0.2 -7" scale="2 2 2"></a-entity>
+
+<a-entity text="value: Auditorium; color: orange" position="-15 12 -15" scale="20 20 20"></a-entity>
+
+
+<!--animation-->
+<!--animation alternate turn circle-->
+<a-entity gltf-model="#bear" position="10 5 5" animation="property: rotation; dur: 10000; from: 0 0 0;    to: 0 180 0; dir: alternate; easing: linear; loop: true" scale="5 5 5"></a-entity>
+
+<!--animation based on a round circle-->
+<a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 30000">
+<a-entity gltf-model="#bus" position="50 0 -15" rotation="0 -90 0" scale="1 1 1"></a-entity>
+</a-entity>
+
+<!--animation to and back-->
+<a-entity gltf-model="#bus" position="8 0.1 5"  rotation="0 180 0" 
+animation='   property: position; dur: 10000; from: 8 0.1 35; to: 8 0.1 -25; dir: normal;  easing: linear; loop: true;' scale="0.5 0.5 0.5"></a-entity>
+<a-entity gltf-model="#bus" position="9 0.1 5" 
+animation='   property: position; dur: 10000; from: 9 0.1 -25; to: 9 0.1 35; dir: normal;  easing: linear; loop: true;' scale="0.5 0.5 0.5"></a-entity>
+
+<!--animation linear and disappear-->
+<a-entity gltf-model="#cyber_truck" position="-20 0.8 -8"  rotation="0 90 0" animation='property: position; dur: 10000; from: -20 0.8 -8; to: 35 0.8 -8; dir: normal;  easing: linear; loop: true;' scale="1 1 1"></a-entity>
+
+<a-entity gltf-model="#bus" position="-20 0.1 -8"  rotation="0 90 0" animation='property: position; dur: 20000; from: -20 0.1 -8; to: 65 0.1 -8; dir: normal;  easing: linear;  delay: 4000; loop: true;' scale="0.5 0.5 0.5"></a-entity>
+
+
+<a-entity gltf-model="#cyber_truck" position="35 0.8 25"  rotation="0 -90 0" animation='property: position; dur: 10000; from: 35 0.8 25; to: -30 0.8 25; dir: normal;  easing: linear; loop: true;' scale="1 1 1"></a-entity>
+
+
+<!--sound-->
+<a-entity cursor position="-98 0.8 8"></a-entity>
+<a-entity gltf-model="#bear" id="bear" position="-98 0.8 8" 
+          sound="src: url(https://andychua555.github.io/metaverse_andy/music3.mp3); on: click"></a-entity>
+
+<a-entity cursor position="30 0.8 -5"></a-entity>
+<a-entity gltf-model="#bear" id="bear" position="30 0.8 -5" 
+          sound="src: url(https://andychua555.github.io/metaverse_andy/music2.mp3); on: click"></a-entity>
+
+<a-entity cursor position="-30 0.8 -5"></a-entity>
+<a-entity gltf-model="#bear" id="bear" position="-30 0.8 -5" 
+          sound="src: url(https://andychua555.github.io/metaverse_andy/music.mp3); on: click"></a-entity>
+
+<!--camera level-->
+<a-camera position="0 1 0"></a-camera>
+<!--<a-entity id="rig" position="25 10 0">
+  <a-camera id="camera"></a-camera>
+</a-entity>-->
+
+<!--video-->
+<a-video src="#myvideo" width="6" height="2.5" position="33 5 12" rotation="0 90 0"></a-video>
+
+</a-entity>
+</a-scene>
+
+<!--Custom avatars-->
+<template>
+  <a-entity>
+    <a-sphere radius="0.1" color="#000000"></a-sphere>
+    <a-sphere position="0.05 0.03 -0.08" radius="0.02" segments-width="8" segments-height="8" color="#000000"></a-sphere>
+    <a-sphere position="-0.05 0.03 -0.08" radius="0.02" segments-width="8" segments-height="8" color="#000000"></a-sphere>
+    <a-sphere class="themable" position="0 -0.07 -0.1" scale="1 1 0.5" segments-width="4" segments-height="4" radius="0.02" color="#11fd3e"></a-sphere>
+    <a-cone class="themable" position="0.03 -0.07 -0.1" rotation="0 0 90" scale="1 1 0.5" segments-radial="8" segments-height="1" height="0.03" radius-bottom="0.03"  color="#1cff3c"></a-cone>
+    <a-cone class="themable" position="-0.03 -0.07 -0.1" rotation="0 0 -90" scale="1 1 0.5" segments-radial="8" segments-height="1" height="0.03" radius-bottom="0.03"  color="#1cff3c"></a-cone>
+  </a-entity>
+</template>
+
+<script src="sharedspace.js"></script>
+</body>
