@@ -1,0 +1,98 @@
+<html>
+  <head>
+<meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+<script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+ <script src="main.js"></script>
+<style>
+table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+td,
+th {
+  border: 2px solid #999;
+  padding: 0.5rem;
+}
+</style>
+  </head>
+  <body>
+
+<script>
+ window.addEventListener('click', function () { 
+   document.querySelector('#video').play();
+ });
+</script>
+
+<!-- Table to display fetched user data -->
+    <table id="users"></table>
+
+    <a-scene gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;
+    meshoptDecoderPath: https://unpkg.com/meshoptimizer@0.16.0/meshopt_decoder.js">
+
+<a-assets>
+<a-asset-item id="cyber_truck" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/zombie-car/model.gltf"> </a-asset-item>
+<a-asset-item id="house" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-7/model.gltf"> </a-asset-item>
+<a-asset-item id="house2" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-4/model.gltf"> </a-asset-item>
+<a-asset-item id="house3" src="https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/house-5/model.gltf"> </a-asset-item>
+<a-asset-item id="bear" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/bear/model.gltf"> </a-asset-item>
+<a-asset-item id="lamppost" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+<a-asset-item id="shop" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamp-post/model.gltf"> </a-asset-item>
+<a-asset-item id="bus" src="https://andychua555.github.io/metaverse_andy/bus.glb"> </a-asset-item>
+<video id="video" autoplay loop="true" src="https://andychua555.github.io/metaverse_andy/video.mp4"></video>
+</a-assets>
+
+  <a-entity environment="preset:forest"></a-entity>
+  <a-entity gltf-model="#house" position="0 0 -15" scale="9 9 9"></a-entity>
+  <a-entity gltf-model="#house2" position="-15 2 -15" scale="7 7 7"></a-entity>
+  <a-entity gltf-model="#house3" position="30 0 -15" scale="7 7 7"></a-entity>
+  <a-entity gltf-model="#bear"position="0 4 -15" rotation="0 90 0" scale="3 3 3"></a-entity>
+  <a-entity gltf-model="#lamppost" position="-15 0 0" scale="3 3 3"></a-entity>
+  <a-entity gltf-model="#shop" position="-15 0 0" scale="3 3 3"></a-entity>
+ <a-entity id="rig">
+        <a-camera position="0 1.6 0"></a-camera>
+        <a-entity oculus-touch-controls="hand: left" ></a-entity>
+        <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+    </a-entity>
+
+<!--animation-->
+
+<!--animation alternate turn circle-->
+<a-entity gltf-model="#bear" position="10 0 5" animation="property: rotation; dur: 10000; from: 0 0 0;    to: 0 180 0; dir: alternate; easing: linear; loop: true" scale="2 2 2"></a-entity>
+
+<!--animation based on a round circle-->
+<a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 30000">
+<a-entity gltf-model="#bus" position="50 0 -15" rotation="0 -90 0" scale="1 1 1"></a-entity>
+</a-entity>
+
+
+<!--animation to and back-->
+<a-entity gltf-model="#bus" position="15 0 5"  rotation="0 180 0" 
+animation='   property: position; dur: 10000; from: 15 0 35; to: 15 0 -25; dir: normal;  easing: linear; loop: true;' scale="1 1 1"></a-entity>
+<a-entity gltf-model="#bus" position="10 0 5" 
+animation='   property: position; dur: 10000; from: 10 0 -25; to: 10 0 35; dir: normal;  easing: linear; loop: true;' scale="1 1 1"></a-entity>
+
+
+<!--animation linear and disappear-->
+<a-entity gltf-model="#cyber_truck" position="-20 0.8 -5"  rotation="0 90 0" animation='property: position; dur: 10000; from: -20 0.8 -5; to: 35 0.8 -5; dir: normal;  easing: linear; loop: true;' scale="1 1 1"></a-entity>
+
+<a-entity gltf-model="#bus" position="-20 0 -10"  rotation="0 90 0" animation='property: position; dur: 20000; from: -20 0 -10; to: 35 0 -10; dir: normal;  easing: linear; loop: true;' scale="1 1 1"></a-entity>
+
+<!--muitlple animation-->
+<a-entity gltf-model="#bus" position="15 0 5" 
+animation='   property: position; dur: 10000; from: 15 0 -15; to: 15 0 35; dir: normal;  easing: linear; loop: true;'
+animation__2='property: rotation; dur: 1000; from: 0 0 0;    to: 0 180 0; dir: normal;    easing: linear; '
+animation__3='property: position; dur: 10000; from: 10 0 35; to: 15 0 -15; dir: normal;  easing: linear; loop: true;'
+animation="property: rotation; dur: 1000; from: 0 0 0;    to: 0 180 0; dir: normal; easing: linear; loop: true" scale="1 1 1"></a-entity>
+
+<!--video-->
+
+<a-video src="#video" width="3" height="1.5" position="33 2 -8" rotation="0 90 0"></a-video>
+  <a-video src="https://andychua555.github.io/metaverse_andy/video.mp4" position="43 2 -8" rotation="0 90 0"></a-video>
+</a-scene>
+
+  </body>
+</html>
